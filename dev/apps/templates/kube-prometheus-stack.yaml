@@ -12,7 +12,7 @@ spec:
     helm:
       version: v3
       valueFiles:
-      - values-rts-dev.yaml
+      - values-bwb-dev.yaml
     path: helm-charts/kube-prometheus-stack
     repoURL: https://github.com/paas2/prometheus 
     targetRevision: HEAD
