@@ -11,9 +11,7 @@ spec:
   source:
     repoURL: https://github.com/paas2-rts/flink-kubernetes-operator.helm
     targetRevision: HEAD
-    path: helm/flink-operator/crds
-    syncOptions:
-    - Replace=true
+    path: crds
     
   destination:
     namespace: flink-operator
@@ -21,7 +19,8 @@ spec:
 
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true  
+    - CreateNamespace=true 
+    - Replace=true 
     automated:  
       prune: true 
 
