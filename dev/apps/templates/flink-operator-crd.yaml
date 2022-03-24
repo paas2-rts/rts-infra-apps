@@ -9,14 +9,11 @@ spec:
   project: flink-operator
   
   source:
-    helm:
-      version: v3
-      skipCrds: true
-      valueFiles:
-      - values-dev.yaml
-    path: ./
     repoURL: https://github.com/paas2-rts/flink-kubernetes-operator.helm
     targetRevision: HEAD
+    path: helm/flink-operator/crds
+    syncOptions:
+    - Replace=true
     
   destination:
     namespace: flink-operator
