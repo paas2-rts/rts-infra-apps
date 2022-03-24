@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: flink-operator
+  name: flink-operator-crd
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
