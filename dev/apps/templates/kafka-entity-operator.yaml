@@ -1,29 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: flink-operator
+  name: kafka-entity-operator
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: flink-operator
-  
+  project: kafka-operator  
+
   source:
     helm:
       version: v3
       valueFiles:
       - values-{{ .Values.env }}.yaml
     path: ./
-    repoURL: https://github.com/paas2-rts/flink-kubernetes-operator.helm
+    repoURL: https://github.com/paas2-rts/kafka.helm
     targetRevision: HEAD
-    
-  destination:
-    namespace: flink-operator
-    server: {{ .Values.spec.destination.server }}
 
+  destination:
+    namespace: kafka
+    server: {{ .Values.spec.destination.server }}
+    
   syncPolicy:
     syncOptions:
     - CreateNamespace=true  
     automated:  
-      prune: true 
-
+      prune: true   

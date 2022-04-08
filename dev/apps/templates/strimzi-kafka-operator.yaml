@@ -12,7 +12,7 @@ spec:
     helm:
       version: v3
       valueFiles:
-      - values-dev.yaml
+      - values-{{ .Values.env }}.yaml
     path: ./
     repoURL: https://github.com/paas2-rts/strimzi-kafka-operator.helm
     targetRevision: HEAD
