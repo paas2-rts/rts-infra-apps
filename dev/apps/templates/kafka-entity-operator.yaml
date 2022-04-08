@@ -18,7 +18,7 @@ spec:
     targetRevision: HEAD
 
   destination:
-    namespace: kafka
+    namespace: kafka-operator
     server: {{ .Values.spec.destination.server }}
     
   syncPolicy:
