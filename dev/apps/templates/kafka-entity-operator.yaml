@@ -14,7 +14,7 @@ spec:
       valueFiles:
       - values-{{ .Values.env }}.yaml
     path: ./
-    repoURL: https://github.com/paas2-rts/kafka.helm
+    repoURL: https://github.com/paas2-rts/strimzi-kafka-entity-operator.helm
     targetRevision: HEAD
 
   destination:
