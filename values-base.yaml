@@ -1,0 +1,74 @@
+global:
+  cluster: rts
+
+  projects:
+    flink-operator:
+      description: "flink operator deployment"
+      sourceRepos:
+        - git@github.com:paas2-rts/flink-kubernetes-operator-deploy.git
+      destinations:
+        namespaces:
+          - flink-operator
+          - flink
+      extraFields: |
+        clusterResourceWhitelist:
+        - group: '*'
+          kind: '*'
+    kafka-operator:
+      description: "kafka operator deployment"
+      sourceRepos:
+        - git@github.com:paas2-rts/strimzi-kafka-operator-deploy.git
+      destinations:
+        namespaces:
+          - kafka
+          - kafka-operator
+          - kafka-connect
+      extraFields: |
+        clusterResourceWhitelist:
+        - group: '*'
+          kind: '*'
+    prometheus-stack:
+      description: "prometheus stack deployment"
+      sourceRepos:
+        - git@github.com:paas2/prometheus.git
+      destinations:
+        namespaces:
+          - monitoring
+      extraFields: |
+        clusterResourceWhitelist:
+        - group: '*'
+          kind: '*'
+
+  applications:
+    flink-operator-crd:
+      enabled: false
+      destination:
+        namespace: flink-operator
+      project: flink-operator
+      source:
+        path: flink-crds
+        repoURL: git@github.com:paas2-rts/flink-kubernetes-operator-deploy.git
+    flink-operator:
+      enabled: false
+      destination:
+        namespace: flink-operator
+      project: flink-operator
+      source:
+        path: ./
+        repoURL: git@github.com:paas2-rts/flink-kubernetes-operator-deploy.git
+    kafka-operator:
+      enabled: false
+      destination:
+        namespace: kafka-operator
+      project: kafka-operator
+      source:
+        path: ./
+        repoURL: git@github.com:paas2-rts/strimzi-kafka-operator-deploy.git
+    kafka-entity-operator:
+      enabled: false
+      destination:
+        namespace: kafka-operator
+      project: kafka-operator
+      source:
+        path: ./
+        repoURL: git@github.com:paas2-rts/strimzi-kafka-entity-operator-deploy.git

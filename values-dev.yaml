@@ -1,0 +1,44 @@
+global:
+  envName: dev
+
+  # default:
+  #   app:
+  #     enableAutoSync: true
+
+  projects:
+    flink-operator:
+      enabled: true
+    kafka-operator:
+      enabled: true
+
+  applications:
+    flink-operator-crd:
+      enabled: true
+      # enableAutoSync: true
+    flink-operator:
+      enabled: true
+      source:
+        extraSourceFields: |
+          helm:
+            valueFiles:
+            - values.yaml
+            - values-base.yaml          
+            - values-{{ $.Values.global.cluster }}-{{ $.Values.envName }}.yaml
+    kafka-operator:
+      enabled: true
+      source:
+        extraSourceFields: |
+          helm:
+            valueFiles:
+            - values.yaml
+            - values-base.yaml          
+            - values-{{ $.Values.global.cluster }}-{{ $.Values.envName }}.yaml
+    kafka-entity-operator:
+      enabled: true
+      source:
+        extraSourceFields: |
+          helm:
+            valueFiles:
+            - values.yaml
+            - values-base.yaml          
+            - values-{{ $.Values.global.cluster }}-{{ $.Values.envName }}.yaml
